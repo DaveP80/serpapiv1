@@ -8,20 +8,24 @@ def youtube_data():
         lang = input("What's the programming language you want to learn? ")
 
         match lang:
-            case "Javacript":
-                search = input(f"you want to learn about {lang} input search term: ")
+            case "Javascript":
+                lang2 = "\u0332".join(lang)
+                search = input(f"you want to learn about {lang2} input search term: ")
             case "javascript":
-                search = input(f"you want to learn about {lang} input search term: ")
-
+                lang2 = "\u0332".join(lang)
+                search = input(f"you want to learn about {lang2} input search term: ")
             case "Python":
-                search = input(f"you want to learn about {lang} input search term: ")
+                lang2 = "\u0332".join(lang)
+                search = input(f"you want to learn about {lang2} input search term: ")
             case "python":
-                search = input(f"you want to learn about {lang} input search term: ")
-
+                lang2 = "\u0332".join(lang)
+                search = input(f"you want to learn about {lang2} input search term: ")
             case "Java":
-                search = input(f"you want to learn about {lang} input search term: ")
+                lang2 = "\u0332".join(lang)
+                search = input(f"you want to learn about {lang2} input search term: ")
             case "java":
-                search = input(f"you want to learn about {lang} input search term: ")
+                lang2 = "\u0332".join(lang)
+                search = input(f"you want to learn about {lang2} input search term: ")
             case _:
                 print(f"Please make a valid selection.\n")
                 runpy.run_path('main.py', run_name='__main__')
