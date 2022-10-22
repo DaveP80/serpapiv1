@@ -58,6 +58,7 @@ def youtube_data():
         for i in range(len(video_results)):
                 if video_results[i] not in video_results[i + 1:]:
                     res_list.append(video_results[i])
+                    
         for val in res_list:
                 count += 1
                 print(val)
