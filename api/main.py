@@ -36,7 +36,7 @@ def youtubeScrape():
         "engine": "youtube",
         "sp": "CAMSBggDEAEYAg%253D%253D",
         "search_query": lang + " " + search,
-        "api_key": "d91009efe6efd4d9456cafc777cd93a5f29ce3530558854a91f8e272f4ffeacd"
+        "api_key": "your key"
         }
 
         search = GoogleSearch(params)
