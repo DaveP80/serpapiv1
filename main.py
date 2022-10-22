@@ -2,11 +2,8 @@ from requests_html import HTMLSession
 import re
 import runpy
 from flask import Flask
-import json
 import asyncio
-import async-timeout
-
-from asyncio.timeouts import timeout
+import io
 
 
 def youtube_scrape():
@@ -29,7 +26,7 @@ def youtube_scrape():
         video_results = []
         res_list = []
         count2 = 0
-        response.html.render(sleep = 1, timeout=8)
+        stream.response.html.render()
         # return f'end of program'
         #response.html.render()
         session1.close
