@@ -1,67 +1,49 @@
 from requests_html import HTMLSession
 import re
 import runpy
+from flask import Flask
+import json
+import asyncio
 
-def youtube_data():
-    while True: 
-        print(f"Welcome to video search, 5 most recent uploads.\n Type Java, Python or Javascript")
-        lang = input("What's the programming language you want to learn? ")
 
-        match lang:
-            case "Javascript":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "javascript":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "Python":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "python":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "Java":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "java":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case _:
-                print(f"Please make a valid selection.\n")
-                runpy.run_path('main.py', run_name='__main__')
+def youtube_scrape():
+    count = 0
+    if count==1:
+        quit()
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
 
-        regex = rf"(?i){lang}(.*)"
-        if re.match(regex, search):
-            print(f"\n")
-            runpy.run_path('main.py', run_name='__main__')
+# request_json = request.get_json()
+    if False:
+        return request.args.get('message')
+    elif False:
+        return request_json['message']
+    else:
         session1 = HTMLSession()
-
-        search_query = lang + " " + search
-
-        url = f"https://www.youtube.com/results?search_query={search_query}&sp=CAMSBggDEAEYAg%253D%253D"
+        url = "https://www.youtube.com/results?search_query=python+tutorial&sp=CAMSBggDEAEYAg%253D%253D"
         response = session1.get(url)
         video_results = []
         res_list = []
-        count = 0
 
-        response.html.render(sleep=1, keep_page = True, scrolldown = 1)
-
+        response.html.render()
+        session1.close
         for links in response.html.find('a#video-title'):
                 link = next(iter(links.absolute_links))
                 videotitles = links.text
                 video_results.append({link: videotitles})
 
         if len(video_results) == 0:
-            print(f"no video results\n ")
-            runpy.run_path('main.py', run_name='__main__')
+            return f'no video results'
 
         for i in range(len(video_results)):
                 if video_results[i] not in video_results[i + 1:]:
                     res_list.append(video_results[i])
-        for val in res_list:
-                count += 1
-                print(val)
-                if count == 10:
-                    print(f"enjoy the video links\n ")
-                    runpy.run_path('main.py', run_name='__main__')
-youtube_data()
+        # loop.close()
+        print(res_list)
+        count += 1
+        return res_list
+    
+                # if count == 10:
+                #     return f'enjoy the video links'
+youtube_scrape()
+
