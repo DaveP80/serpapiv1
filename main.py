@@ -7,28 +7,17 @@ def youtube_data():
         print(f"Welcome to video search, 5 most recent uploads.\n Type Java, Python or Javascript")
         lang = input("What's the programming language you want to learn? ")
 
-        match lang:
-            case "Javascript":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "javascript":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "Python":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "python":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "Java":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case "java":
-                lang2 = "\u0332".join(lang)
-                search = input(f"you want to learn about {lang2} input search term: ")
-            case _:
-                print(f"Please make a valid selection.\n")
-                runpy.run_path('main.py', run_name='__main__')
+        checklist = ['Javascript', 'javascript', 'JavaScript', 'Python', 'python', 'Java', 'java']
+
+        if lang in checklist:
+            pass
+        else:
+            print(f"Invalid Selection, enter Java, python ....\n")
+            runpy.run_path('main.py', run_name='__main__')
+
+        lang2 = "\u0332".join(lang)
+
+        search = input(f"you want to learn about {lang2} input search term: ")
 
         regex = rf"(?i){lang}(.*)"
         if re.match(regex, search):
